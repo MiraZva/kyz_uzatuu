@@ -1,0 +1,858 @@
+@font-face {
+    font-family: "monika";
+    src: url("assets/font/KG_Monika_0.ttf");
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: "monika2";
+    src: url("assets/font/KG_Balmoral_2.ttf");
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+/* =========================================================
+   ОСНОВНЫЕ НАСТРОЙКИ
+========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+    background: #dce6ef;
+
+    color: #202020;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   ОСНОВНОЕ ПОЛОТНО — 440 PX
+========================================================= */
+
+.page {
+    position: relative;
+
+    width: 100%;
+    max-width: 440px;
+
+    margin: 0 auto;
+
+    background: #ffffff;
+
+    overflow: hidden;
+
+    min-height: 100vh;
+}
+
+
+/* =========================================================
+   ШРИФТЫ
+========================================================= */
+
+/*
+    FONT 1
+    Дата + имя
+*/
+
+.font-1 {
+    font-family: "Cormorant Garamond", serif;
+}
+
+
+/*
+    FONT 2
+    Крупные заголовки
+*/
+
+.font-2 {
+    font-family: "Great Vibes", cursive;
+}
+
+
+/*
+    FONT 3
+    Основной текст
+*/
+
+.font-3 {
+    font-family: "Montserrat", sans-serif;
+}
+
+
+/* =========================================================
+   ПЕРВЫЙ ЭКРАН
+========================================================= */
+
+.hero {
+
+    position: relative;
+
+    width: 100%;
+    height: 810px;
+
+    background: #ffffff;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   ПТИЧКИ
+========================================================= */
+
+.birds {
+
+    position: absolute;
+
+    z-index: 3;
+
+    top: 0px;
+    left: -10%;
+
+    width: 120%;
+    height: auto;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   ГОЛУБАЯ ТКАНЬ
+========================================================= */
+
+.blue-fabric {
+
+    position: absolute;
+
+    z-index: 5;
+
+    top: 545px;
+    left: -5px;
+
+    width: 450px;
+
+    height: auto;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   ДАТА
+========================================================= */
+
+.hero-date {
+
+    position: absolute;
+
+    z-index: 10;
+
+    top: 60px;
+
+    left: 0;
+    right: 0;
+
+    text-align: center;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 40px;
+
+    font-weight: 400;
+
+    letter-spacing: 1px;
+
+    color: #6379bd;
+}
+
+
+/* =========================================================
+   КЫЗ УЗАТУУ
+========================================================= */
+
+.hero-title {
+
+    position: absolute;
+
+    z-index: 10;
+
+    top: 190px;
+
+    left: 0;
+    right: 0;
+
+    text-align: center;
+
+    font-family: "Great Vibes", cursive;
+
+    font-size: 43px;
+
+    font-weight: 400;
+
+    color: #526bb5;
+
+    line-height: 1;
+}
+
+
+/* =========================================================
+   ИМЯ
+========================================================= */
+
+.hero-name {
+
+    position: absolute;
+
+    z-index: 10;
+
+    top: 248px;
+
+    left: 0;
+    right: 0;
+
+    text-align: center;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 30px;
+
+    letter-spacing: 6px;
+
+    text-transform: uppercase;
+
+    color: #7186c1;
+}
+
+
+/* =========================================================
+   КНОПКА МУЗЫКИ
+========================================================= */
+
+.music-button {
+
+    position: fixed;
+
+    z-index: 100;
+
+    bottom: 20px;
+    right: 20px;
+
+    width: 45px;
+    height: 45px;
+
+    border: 1px solid rgba(75, 96, 160, 0.4);
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.9);
+
+    color: #526bb5;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 22px;
+
+    transition: 0.3s;
+}
+
+.music-button:hover {
+
+    transform: scale(1.05);
+
+}
+
+.music-button.paused {
+
+    opacity: 0.55;
+}
+
+
+/* =========================================================
+   БЛОК ПРИГЛАШЕНИЯ
+========================================================= */
+
+.invitation {
+
+    position: relative;
+
+    width: 100%;
+
+    min-height: 1100px;
+
+    background: #ffffff;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   МАЛЕНЬКАЯ ПТИЧКА
+========================================================= */
+
+.bird-small {
+
+    position: absolute;
+
+    z-index: 5;
+
+    top: 115px;
+
+    right: -8px;
+
+    width: 115px;
+
+    height: auto;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   ДЕВУШКА
+========================================================= */
+
+.girl {
+
+    position: absolute;
+
+    z-index: 4;
+
+    top: 160px;
+
+    left: -60px;
+
+    width: 280px;
+
+    height: auto;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   ЗАГОЛОВОК ПРИГЛАШЕНИЯ
+========================================================= */
+
+.invitation-heading {
+
+    position: relative;
+
+    z-index: 10;
+
+    padding-top: 10px;
+
+    text-align: center;
+
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+
+/* =========================================================
+   URMATтуу
+========================================================= */
+
+.heading-main {
+
+    font-family: "Great Vibes", cursive;
+
+    font-size: 46px;
+
+    color: #6279bf;
+
+    line-height: 1.2;
+}
+
+
+/* =========================================================
+   СИЗДЕРДИ КЫЗЫБЫЗ
+========================================================= */
+
+.heading-script {
+
+    margin-top: 8px;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 24px;
+
+    color: #222;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   ЖАЙНАГҮЛДҮН
+========================================================= */
+
+.heading-name {
+
+    margin-top: 4px;
+
+    font-family: "monika2";
+
+    font-size: 72px;
+
+
+    color: #6279bf;
+}
+
+
+/* =========================================================
+   ОСНОВНОЙ ТЕКСТ
+========================================================= */
+
+.invitation-text {
+
+    position: relative;
+
+    z-index: 10;
+
+    width: 280px;
+
+    margin-left: auto;
+
+    margin-right: 18px;
+
+    margin-top: 60px;
+
+    text-align: right;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 20px;
+
+    line-height: 1.5;
+
+    font-weight: 400;
+
+    color: #111;
+
+}
+
+
+/* =========================================================
+   ЦВЕТЫ СЛЕВА
+========================================================= */
+
+.flowers-left {
+
+    position: absolute;
+
+    z-index: 3;
+
+    left: -30%;
+
+    top: 720px;
+
+    width: 240px;
+
+    height: auto;
+
+    pointer-events: none;
+    rotate: 20deg;
+    
+}
+.kilem {
+
+    position: absolute;
+
+    z-index: 3;
+
+    left: 56%;
+
+    top: 460px;
+
+    width: 360px;
+
+    height: auto;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   ИНФОРМАЦИЯ
+========================================================= */
+
+.details {
+
+    position: absolute;
+
+    z-index: 10;
+
+    left: 0;
+    right: 0;
+
+    bottom: 70px;
+
+    min-height: 300px;
+}
+
+
+/* =========================================================
+   КАЖДЫЙ БЛОК
+========================================================= */
+
+.details-block {
+
+    position: absolute;
+}
+
+
+/* =========================================================
+   АДРЕС
+========================================================= */
+
+.address {
+
+    left: 40px;
+
+    top: -200px;
+}
+
+
+/* =========================================================
+   ВРЕМЯ
+========================================================= */
+
+.time {
+
+    right: 40px;
+
+    bottom: 25px;
+    text-align: right;
+}
+
+
+/* =========================================================
+   ЗАГОЛОВОК
+========================================================= */
+
+.details-title {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 36px;
+
+    color: #7186c1;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================================================
+   ЗНАЧЕНИЕ
+========================================================= */
+
+.details-value {
+
+    font-family: "Cormorant Garamond", serif;
+    font-variant-numeric: lining-nums;
+
+    font-size: 28px;
+
+    line-height: 1.45;
+
+    color: #111;
+}
+
+
+/* =========================================================
+   10:00
+========================================================= */
+
+.time-big {
+
+    font-size: 28px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   ФИНАЛЬНЫЙ БЛОК
+========================================================= */
+
+.final-section {
+
+    position: relative;
+
+    width: 100%;
+
+    height: 670px;
+
+    overflow: hidden;
+
+    background: #ffffff;
+}
+
+
+/* =========================================================
+   ГОЛУБОЙ ФОН
+========================================================= */
+
+.blue-paper {
+
+    position: absolute;
+
+    z-index: 1;
+
+    top: 95px;
+
+    left: -10px;
+
+    width: 460px;
+
+    height: 400pt;
+
+    background: #b8cce0;
+}
+
+
+/* =========================================================
+   БЕЛЫЕ ЦВЕТЫ
+========================================================= */
+
+.white-flowers {
+
+    position: absolute;
+
+    z-index: 5;
+
+    top: 30px;
+
+    left: -60px;
+
+    width: 540px;
+
+    height: auto;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   ВЕРХНИЙ РВАНЫЙ КРАЙ
+========================================================= */
+
+.paper-top {
+
+    position: absolute;
+
+    z-index: 4;
+
+    top: 85px;
+
+    left: 0;
+
+    width: 100%;
+
+    height: auto;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   НИЖНИЙ РВАНЫЙ КРАЙ
+========================================================= */
+
+.paper-bottom {
+
+    position: absolute;
+
+    z-index: 4;
+
+    bottom: 40px;
+
+    left: 0;
+
+    width: 100%;
+
+    height: auto;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   ФИНАЛЬНЫЙ ТЕКСТ
+========================================================= */
+
+.final-content {
+
+    position: absolute;
+
+    z-index: 10;
+
+    top: 240px;
+
+    left: 0;
+    right: 0;
+
+    text-align: center;
+
+    padding: 0 35px;
+}
+
+
+/* =========================================================
+   ЗАГОЛОВОК
+========================================================= */
+
+.final-title {
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 30px;
+    font-weight: bold;
+
+    line-height: 1.5;
+
+    letter-spacing: 1.5px;
+
+    color: #4C6D96;
+
+    text-align: right;
+}
+
+
+/* =========================================================
+   КУРСИВНЫЙ ТЕКСТ
+========================================================= */
+
+.final-script {
+
+    margin-top: 28px;
+
+    font-family: "monika2";
+
+    font-size: 60px;
+
+    line-height: 1;
+
+    color: #ffffff;
+
+    letter-spacing: 1.8px;
+    
+}
+
+
+/* =========================================================
+   КОЛЬЦА
+========================================================= */
+
+.rings {
+
+    position: absolute;
+
+    z-index: 20;
+
+    bottom: 40px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 235px;
+
+    height: auto;
+
+    pointer-events: none;
+}
+
+
+
+
+
+/* =========================================================
+   МОБИЛЬНЫЕ
+========================================================= */
+
+@media (max-width: 440px) {
+
+    .page {
+        width: 100%;
+    }
+
+}
+
+
+/* =========================================================
+   БОЛЬШОЙ ЭКРАН
+========================================================= */
+
+@media (min-width: 441px) {
+
+    body {
+        min-height: 100vh;
+
+        background: #dce6ef;
+    }
+
+    .page {
+        box-shadow:
+            0 0 30px rgba(0, 0, 0, 0.08);
+    }
+
+}
+
+
+/* =========================================================
+   НЕБОЛЬШИЕ ТЕЛЕФОНЫ
+========================================================= */
+
+@media (max-width: 360px) {
+
+    .hero {
+        height: 530px;
+    }
+
+    .hero-title {
+        font-size: 38px;
+    }
+
+    .hero-name {
+        font-size: 26px;
+    }
+
+    .invitation-text {
+        width: 255px;
+
+        margin-right: 10px;
+
+        font-size: 12px;
+    }
+
+    .girl {
+        width: 105px;
+    }
+
+    .bird-small {
+        width: 90px;
+    }
+
+}
