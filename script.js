@@ -1,93 +1,56 @@
 const music = document.getElementById("weddingMusic");
 
-music.volume = 0.5;
-
 let musicStarted = false;
 
-
-/* =========================================
-   ЗАПУСК МУЗЫКИ
-========================================= */
+music.volume = 0.5;
 
 function startMusic() {
+    if (musicStarted) return;
 
-    if (musicStarted) {
-        return;
+    const promise = music.play();
+
+    if (promise !== undefined) {
+        promise
+            .then(() => {
+                musicStarted = true;
+                console.log("🎵 Музыка запущена");
+            })
+            .catch(() => {
+                console.log("Музыка заблокирована браузером");
+            });
     }
-
-    music.play()
-        .then(() => {
-
-            musicStarted = true;
-
-            console.log("Музыка запущена");
-
-        })
-        .catch((error) => {
-
-            console.log("Браузер пока не разрешил музыку");
-
-        });
-
 }
 
-
-/* =========================================
-   1. ПЫТАЕМСЯ ЗАПУСТИТЬ ПРИ ОТКРЫТИИ
-========================================= */
-
+// 1. Пытаемся сразу при открытии
 window.addEventListener("load", () => {
-
     startMusic();
-
 });
 
+// 2. При первом касании телефона
+document.addEventListener(
+    "touchstart",
+    () => {
+        startMusic();
+    },
+    { once: true, passive: true }
+);
 
-/* =========================================
-   2. ПРИ СКРОЛЛЕ
-========================================= */
+// 3. При первом нажатии
+document.addEventListener(
+    "pointerdown",
+    () => {
+        startMusic();
+    },
+    { once: true }
+);
 
+// 4. Дополнительная попытка при скролле
 window.addEventListener(
     "scroll",
     () => {
-
         startMusic();
-
     },
     { passive: true }
 );
 
 
-/* =========================================
-   3. ПРИ ПЕРВОМ КАСАНИИ
-========================================= */
-
-document.addEventListener(
-    "touchstart",
-    () => {
-
-        startMusic();
-
-    },
-    {
-        passive: true,
-        once: true
-    }
-);
-
-
-/* =========================================
-   4. ПРИ КЛИКЕ
-========================================= */
-
-document.addEventListener(
-    "click",
-    () => {
-
-        startMusic();
-
-    },
-    {
-        once: true
-    }
-);
