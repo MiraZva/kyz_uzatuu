@@ -335,9 +335,9 @@ body {
 
     z-index: 4;
 
-    top: 160px;
+    top: 200px;
 
-    left: -60px;
+    left: -16%;
 
     width: 280px;
 
@@ -433,7 +433,7 @@ body {
 
     margin-left: auto;
 
-    margin-right: 18px;
+    margin-right: 12px;
 
     margin-top: 60px;
 
@@ -441,7 +441,7 @@ body {
 
     font-family: "Cormorant Garamond", serif;
 
-    font-size: 20px;
+    font-size: 18px;
 
     line-height: 1.5;
 
@@ -527,7 +527,7 @@ body {
 
 .address {
 
-    left: 40px;
+    left: 20px;
 
     top: -200px;
 }
@@ -573,7 +573,7 @@ body {
     font-family: "Cormorant Garamond", serif;
     font-variant-numeric: lining-nums;
 
-    font-size: 28px;
+    font-size: 24px;
 
     line-height: 1.45;
 
@@ -603,7 +603,7 @@ body {
 
     width: 100%;
 
-    height: 670px;
+    height: 740px;
 
     overflow: hidden;
 
