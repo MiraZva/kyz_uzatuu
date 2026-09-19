@@ -1,102 +1,76 @@
 const music = document.getElementById("weddingMusic");
 const musicButton = document.getElementById("musicButton");
 
-music.volume = 0.45;
+let isPlaying = false;
+
+// Громкость
+music.volume = 0.5;
 
 
-/* =========================================
-   ПОПЫТКА ЗАПУСТИТЬ МУЗЫКУ СРАЗУ
-========================================= */
+// =========================================
+// ЗАПУСК / ПАУЗА
+// =========================================
 
-function tryStartMusic() {
+async function toggleMusic() {
 
-    music.play()
-        .then(() => {
+    try {
 
-            // Музыка действительно запустилась
+        if (music.paused) {
+
+            await music.play();
+
+            isPlaying = true;
+
             musicButton.classList.remove("paused");
 
-        })
-        .catch(() => {
+        } else {
 
-            // Браузер заблокировал autoplay
+            music.pause();
+
+            isPlaying = false;
+
             musicButton.classList.add("paused");
+        }
 
-        });
+    } catch (error) {
 
+        console.log("Ошибка воспроизведения:", error);
+
+    }
 }
 
 
-/* =========================================
-   ПРИ ОТКРЫТИИ САЙТА
-========================================= */
+// =========================================
+// НАЖАТИЕ НА КНОПКУ МУЗЫКИ
+// =========================================
 
-window.addEventListener("load", () => {
+musicButton.addEventListener("click", function (event) {
 
-    tryStartMusic();
+    event.preventDefault();
+    event.stopPropagation();
+
+    toggleMusic();
 
 });
 
 
-/* =========================================
-   ЕСЛИ AUTOPLAY ЗАБЛОКИРОВАН
-   ЗАПУСКАЕМ ПРИ ПЕРВОМ ДЕЙСТВИИ
-========================================= */
+// =========================================
+// СОСТОЯНИЕ МУЗЫКИ
+// =========================================
 
-function userInteraction() {
+music.addEventListener("play", () => {
 
-    if (music.paused) {
+    isPlaying = true;
 
-        music.play()
-            .then(() => {
+    musicButton.classList.remove("paused");
 
-                musicButton.classList.remove("paused");
-
-            })
-            .catch(() => {});
-
-    }
-
-}
+});
 
 
-/* Клик */
-document.addEventListener(
-    "click",
-    userInteraction,
-    { once: true }
-);
+music.addEventListener("pause", () => {
 
+    isPlaying = false;
 
-/* Телефон */
-document.addEventListener(
-    "touchstart",
-    userInteraction,
-    { once: true }
-);
-
-
-/* =========================================
-   КНОПКА МУЗЫКИ
-   ТОЛЬКО PLAY / PAUSE
-========================================= */
-
-musicButton.addEventListener("click", (event) => {
-
-    event.stopPropagation();
-
-    if (music.paused) {
-
-        music.play();
-
-        musicButton.classList.remove("paused");
-
-    } else {
-
-        music.pause();
-
-        musicButton.classList.add("paused");
-
-    }
+    musicButton.classList.add("paused");
 
 });

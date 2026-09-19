@@ -10,10 +10,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <!--
-        Временные шрифты.
-        Позже можем заменить их на твои 3 конкретных шрифта.
-    -->
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Great+Vibes&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
@@ -26,16 +22,13 @@
     <!-- =====================================================
          МУЗЫКА
     ====================================================== -->
+<audio id="weddingMusic" loop preload="auto">
+    <source src="assets/music.mp3" type="audio/mpeg">
+</audio>
 
-    <audio id="weddingMusic" loop preload="auto">
-        <source src="assets/music.mp3" type="audio/mpeg">
-    </audio>
-
-    <!-- Кнопка музыки -->
-    <button class="music-button" id="musicButton" aria-label="Музыка">
-        <span class="music-icon">♫</span>
-    </button>
-
+<button class="music-button" id="musicButton">
+    ♫
+</button>
 
     <!-- =====================================================
          ПЕРВЫЙ ЭКРАН
