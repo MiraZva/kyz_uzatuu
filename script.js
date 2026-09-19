@@ -1,56 +1,113 @@
+/* =========================================================
+   МУЗЫКА
+========================================================= */
+
 const music = document.getElementById("weddingMusic");
+const musicButton = document.getElementById("musicButton");
 
 let musicStarted = false;
 
-music.volume = 0.5;
+
+/* =========================================================
+   ВКЛЮЧЕНИЕ МУЗЫКИ
+========================================================= */
 
 function startMusic() {
-    if (musicStarted) return;
 
-    const promise = music.play();
+    if (musicStarted) {
+        return;
+    }
 
-    if (promise !== undefined) {
-        promise
+    music.volume = 0.45;
+
+    const playPromise = music.play();
+
+    if (playPromise !== undefined) {
+
+        playPromise
             .then(() => {
+
                 musicStarted = true;
-                console.log("🎵 Музыка запущена");
+
+                musicButton.classList.remove("paused");
+
             })
             .catch(() => {
-                console.log("Музыка заблокирована браузером");
+
+                /*
+                    Браузер заблокировал autoplay.
+                    Музыка включится после первого
+                    клика / касания.
+                */
+
+                musicButton.classList.add("paused");
+
             });
     }
 }
 
-// 1. Пытаемся сразу при открытии
+
+/* =========================================================
+   ПЫТАЕМСЯ ВКЛЮЧИТЬ СРАЗУ
+========================================================= */
+
 window.addEventListener("load", () => {
+
     startMusic();
+
 });
 
-// 2. При первом касании телефона
+
+/* =========================================================
+   ПЕРВОЕ ДЕЙСТВИЕ ПОЛЬЗОВАТЕЛЯ
+========================================================= */
+
+document.addEventListener(
+    "click",
+    () => {
+
+        startMusic();
+
+    },
+    {
+        once: true
+    }
+);
+
+
 document.addEventListener(
     "touchstart",
     () => {
-        startMusic();
-    },
-    { once: true, passive: true }
-);
 
-// 3. При первом нажатии
-document.addEventListener(
-    "pointerdown",
-    () => {
         startMusic();
-    },
-    { once: true }
-);
 
-// 4. Дополнительная попытка при скролле
-window.addEventListener(
-    "scroll",
-    () => {
-        startMusic();
     },
-    { passive: true }
+    {
+        once: true
+    }
 );
 
 
+/* =========================================================
+   КНОПКА МУЗЫКИ
+========================================================= */
+
+musicButton.addEventListener("click", (event) => {
+
+    event.stopPropagation();
+
+    if (music.paused) {
+
+        music.play();
+
+        musicButton.classList.remove("paused");
+
+    } else {
+
+        music.pause();
+
+        musicButton.classList.add("paused");
+
+    }
+
+});

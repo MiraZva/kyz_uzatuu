@@ -168,6 +168,7 @@ body {
     text-align: center;
 
     font-family: "Cormorant Garamond", serif;
+    font-variant-numeric: lining-nums;
 
     font-size: 40px;
 
@@ -283,7 +284,6 @@ body {
 
     opacity: 0.55;
 }
-
 
 /* =========================================================
    БЛОК ПРИГЛАШЕНИЯ
