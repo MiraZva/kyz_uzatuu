@@ -1,76 +1,93 @@
 const music = document.getElementById("weddingMusic");
-const musicButton = document.getElementById("musicButton");
 
-let isPlaying = false;
-
-// Громкость
 music.volume = 0.5;
 
+let musicStarted = false;
 
-// =========================================
-// ЗАПУСК / ПАУЗА
-// =========================================
 
-async function toggleMusic() {
+/* =========================================
+   ЗАПУСК МУЗЫКИ
+========================================= */
 
-    try {
+function startMusic() {
 
-        if (music.paused) {
-
-            await music.play();
-
-            isPlaying = true;
-
-            musicButton.classList.remove("paused");
-
-        } else {
-
-            music.pause();
-
-            isPlaying = false;
-
-            musicButton.classList.add("paused");
-        }
-
-    } catch (error) {
-
-        console.log("Ошибка воспроизведения:", error);
-
+    if (musicStarted) {
+        return;
     }
+
+    music.play()
+        .then(() => {
+
+            musicStarted = true;
+
+            console.log("Музыка запущена");
+
+        })
+        .catch((error) => {
+
+            console.log("Браузер пока не разрешил музыку");
+
+        });
+
 }
 
 
-// =========================================
-// НАЖАТИЕ НА КНОПКУ МУЗЫКИ
-// =========================================
+/* =========================================
+   1. ПЫТАЕМСЯ ЗАПУСТИТЬ ПРИ ОТКРЫТИИ
+========================================= */
 
-musicButton.addEventListener("click", function (event) {
+window.addEventListener("load", () => {
 
-    event.preventDefault();
-    event.stopPropagation();
-
-    toggleMusic();
+    startMusic();
 
 });
 
 
-// =========================================
-// СОСТОЯНИЕ МУЗЫКИ
-// =========================================
+/* =========================================
+   2. ПРИ СКРОЛЛЕ
+========================================= */
 
-music.addEventListener("play", () => {
+window.addEventListener(
+    "scroll",
+    () => {
 
-    isPlaying = true;
+        startMusic();
 
-    musicButton.classList.remove("paused");
+    },
+    { passive: true }
+);
 
-});
+
+/* =========================================
+   3. ПРИ ПЕРВОМ КАСАНИИ
+========================================= */
+
+document.addEventListener(
+    "touchstart",
+    () => {
+
+        startMusic();
+
+    },
+    {
+        passive: true,
+        once: true
+    }
+);
 
 
-music.addEventListener("pause", () => {
+/* =========================================
+   4. ПРИ КЛИКЕ
+========================================= */
 
-    isPlaying = false;
+document.addEventListener(
+    "click",
+    () => {
 
-    musicButton.classList.add("paused");
+        startMusic();
 
-});
+    },
+    {
+        once: true
+    }
+);
